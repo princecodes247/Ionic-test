@@ -21,6 +21,15 @@ export class TodosPage implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Controls the flow of the state of the TodoButton Component and adds todos to the page
+   *
+   * @remarks
+   * This method is part of the TodosPage Module
+   *
+   * @param state - The current state of the TodoButton Component
+   * @returns undefined
+   */
   onStateChange(state: BUTTON_STATE) {
     if (state == BUTTON_STATE.LOADING) {
       this.todos = [];
@@ -37,6 +46,15 @@ export class TodosPage implements OnInit {
     }
   }
 
+  /**
+   * Sets the state of the TodoButton Component
+   *
+   * @remarks
+   * This method is part of the TodosPage Module
+   *
+   * @param state - The new state of the TodoButton Component
+   * @returns undefined
+   */
   private setButtonState(state: BUTTON_STATE) {
     this.TodoButton.state = state;
   }

@@ -17,13 +17,18 @@ export class TodoButtonComponent implements OnInit {
   private delaySecs: number = config.todos.delayAfterLoadSecs;
 
   private _state: BUTTON_STATE;
-
+  /**
+   * Sets the current state of the component
+   */
   set state(state) {
     this._state = state;
     this.reflectState();
     this.stateChange.emit(state);
   }
 
+  /**
+   * Fetches the current state of the component
+   */
   get state() {
     return this._state;
   }
@@ -35,10 +40,28 @@ export class TodoButtonComponent implements OnInit {
     this.state = BUTTON_STATE.LOADING;
   }
 
+  /**
+   * Updates the Button State to its Loading State
+   *
+   * @remarks
+   * This method is part of the TodoButton Component
+   *
+   * @param none
+   * @returns undefined
+   */
   onClick() {
     this.state = BUTTON_STATE.LOADING;
   }
 
+  /**
+   * Updates the Button UI according to the current state
+   *
+   * @remarks
+   * This method is part of the TodoButton Component
+   *
+   * @param none
+   * @returns undefined
+   */
   private reflectState() {
     switch (this.state) {
       case BUTTON_STATE.LOADING:
@@ -69,6 +92,15 @@ export class TodoButtonComponent implements OnInit {
     }
   }
 
+  /**
+   * Emits a countdown beginning from the delaySecs property
+   *
+   * @remarks
+   * This method is part of the TodoButton Component
+   *
+   * @param none
+   * @returns An Observable
+   */
   private delay(): Observable<number> {
     const delaySecs = this.delaySecs;
 

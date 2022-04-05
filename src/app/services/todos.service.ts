@@ -14,6 +14,15 @@ export class TodosService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Fetches todos from the TODOS_URL property
+   *
+   * @remarks
+   * This method is part of the Todos Service
+   *
+   * @param none
+   * @returns An Observable TODO array
+   */
   getTodos(): Observable<TODO[]> {
     return this.http.get<any[]>(this.TODOS_URL).pipe(
       switchMap((todos) => {
@@ -34,6 +43,16 @@ export class TodosService {
       catchError(this.handleError)
     );
   }
+
+  /**
+   * Handles errors on http request
+   *
+   * @remarks
+   * This method is part of the Todos Service
+   *
+   * @param error - Error returned by the http client
+   * @returns A throwError function with the error message
+   */
   private handleError(error: any): Observable<TODO[]> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
@@ -52,6 +71,15 @@ export class TodosService {
     });
   }
 
+  /**
+   * Create a single TODO
+   *
+   * @remarks
+   * This method is part of the Todos Service
+   *
+   * @param todo - The number to be checked
+   * @returns A TODO
+   */
   private hydrateTodo(todo: any): TODO {
     return {
       title: todo.title,
@@ -59,6 +87,15 @@ export class TodosService {
     };
   }
 
+  /**
+   * Checks if a number is a prime number
+   *
+   * @remarks
+   * This method is part of the Todos Service
+   *
+   * @param number - The number to be checked
+   * @returns A boolean matching if the number is a prime number or not
+   */
   private isPrime(number: number) {
     if (number < 2) return false;
 
